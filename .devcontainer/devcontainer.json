@@ -1,0 +1,31 @@
+{
+    "name": "Text Classifier ML Environment",
+
+    // We use the official Python image (based on Linux Debian) instead of raw Ubuntu.
+  // This saves you from having to manually install Python/Pip every time.
+    "image": "mcr.microsoft.com/devcontainers/python:3.10",
+
+    "customizations": {
+        "vscode":{
+            "settings":{
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
+            },
+            "extensions":[
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-azuretools.vscode-docker",
+                "donjayamanne.python-extension-pack",
+            ]
+        }
+    },
+
+    // This automatically installs your libraries when the container starts!
+  "postCreateCommand": "pip install -r requirements.txt",
+
+  // Open Port 5000 so you can access your Flask app from your Windows browser
+  "forwardPorts": [5000],
+
+  // Run as a non-root user (safer, standard practice)
+  "remoteUser": "vscode"
+
+}
